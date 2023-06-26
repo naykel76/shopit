@@ -1,0 +1,42 @@
+{
+    "name": "naykel/shopit",
+    "description": "E-commerce package for NayKel Laravel applications",
+    "keywords": [
+        "naykel",
+        "laravel",
+        "shopit",
+        "e-commerce"
+    ],
+    "homepage": "https://github.com/naykel/shopit",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nathan",
+            "email": "nathan@naykel.com.au",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "livewire/livewire": "^2.10.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Naykel\\Shopit\\": "src/",
+            "Naykel\\Shopit\\Database\\Factories\\": "database/factories/",
+            "Naykel\\Shopit\\Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Naykel\\Shopit\\ShopitServiceProvider"
+            ]
+        }
+    }
+}
