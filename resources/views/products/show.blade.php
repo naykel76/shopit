@@ -6,7 +6,11 @@
     <div>{{ $product->code }}</div>
     <div>{{ $product->price }}</div>
     <div>{{ $product->description }}</div>
-
     <img src="{{ $product->image_name }}" alt="{{ $product->name }}">
 
+    <livewire:add-to-cart-button :$product />
+
 </x-gt-app-layout>
+
+
+

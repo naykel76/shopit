@@ -3,8 +3,11 @@
 namespace Naykel\Shopit;
 
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 use Naykel\Shopit\Commands\InstallCommand;
 use Naykel\Shopit\Contracts\CartInterface;
+use Naykel\Shopit\Livewire\AddToCartButton;
+use Naykel\Shopit\Livewire\ShoppingCart;
 
 class ShopitServiceProvider extends ServiceProvider
 {
@@ -24,5 +27,8 @@ class ShopitServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'shopit');
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->loadRoutesFrom(__DIR__ . '/routes.php');
+
+        Livewire::component('add-to-cart-button', AddToCartButton::class);
+        Livewire::component('shopping-cart', ShoppingCart::class);
     }
 }

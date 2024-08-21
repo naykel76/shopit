@@ -12,7 +12,8 @@
 
 **Service Provider**: In the `ShopitServiceProvider`:
 
-The `CartInterface` is bound to the `CartService` using `$this->app->bind(CartInterface::class, CartService::class);`.
+The `CartInterface` is bound to the `CartService` using `$this->app->bind(CartInterface::class,
+CartService::class);`.
 
 The `CartService` is registered as a singleton with the key `cart` using 
     
@@ -22,4 +23,5 @@ $this->app->singleton('cart', function ($app) {
 );
 ```
 
-**Facade**: The Cart facade is defined in `src/Facades/Cart.php` and returns `cart` as the facade accessor, which corresponds to the singleton registered in the service provider.
+**Facade**: The Cart facade is defined in `src/Facades/Cart.php` and returns `cart` as the facade
+accessor, which corresponds to the singleton registered in the service provider.

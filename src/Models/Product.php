@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Naykel\Shopit\Database\Factories\ProductFactory;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -17,6 +18,13 @@ class Product extends Model
     protected static function newFactory(): Factory
     {
         return ProductFactory::new();
+    }
+
+    public function mainImageUrl()
+    {
+        return $this->image_name
+            ? Storage::disk('products')->url($this->image_name)
+            : url('/svg/placeholder.svg');
     }
 
     public function getSlugOptions(): SlugOptions

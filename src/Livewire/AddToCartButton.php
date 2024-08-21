@@ -3,38 +3,24 @@
 namespace Naykel\Shopit\Livewire;
 
 use Livewire\Component;
+use Naykel\Shopit\Facades\Cart;
+use Naykel\Shopit\Models\Product;
 
 class AddToCartButton extends Component
 {
-    public bool $showQtyInput = true;
-    public int $currentQty = 0;
-    public int $itemId;
+    public Product $product;
     public int $qty = 1;
 
-    public function hydrate(): void
-    {
-        $this->currentQty = Cart::getCurrentQty($this->itemId);
-    }
-
-    /**
-     * add product to cart
-     */
     public function add(): void
     {
+        Cart::updateQuantity($this->product->id, (int) $this->qty);
 
-        $qty = $this->currentQty + (int) $this->qty;
-
-        if ($qty < 1) return;
-
-        Cart::add($this->itemId, $qty);
-
-        $this->qty = 1; // reset to prepare for the next quantity input
-
-        $this->emit('cartUpdated');
+        $this->dispatch('cart-updated');
+        $this->dispatch('notify', 'Item added to cart');
     }
 
     public function render()
     {
-        return view('shopit::add-to-cart-button');
+        return view('shopit::livewire.cart.add-to-cart-button');
     }
 }
